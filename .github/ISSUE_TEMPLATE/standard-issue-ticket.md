@@ -33,7 +33,7 @@ assignees: fmings
 
 ---
 
-## 💬 Additional Notes
+## Additional Notes/Examples
 <!-- Any extra information that might be useful. -->
 - Example: Coordinate with the design team for updated visuals.
 - Example: Ensure accessibility for screen readers.
