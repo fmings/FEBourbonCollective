@@ -3,7 +3,7 @@ name: Standard Issue Ticket
 about: For project planning, features, debugs.
 title: ''
 labels: ''
-assignees: ''
+assignees: fmings
 
 ---
 
