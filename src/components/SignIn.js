@@ -13,10 +13,9 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
+      <img src="\images\BourbonCollectiveLogoDark.png" alt="bourbon collective logo" />
       <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Sign In
+        Sign In/Register
       </Button>
     </div>
   );
