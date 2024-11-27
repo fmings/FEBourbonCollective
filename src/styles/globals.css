@@ -2,3 +2,11 @@ body {
   background: #F0E6D2;
   color: white;
 }
+
+Form {
+  color: black;
+}
+
+.modal-heading {
+  color: black;
+}
