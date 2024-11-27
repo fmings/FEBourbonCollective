@@ -10,7 +10,16 @@ const checkUser = (uid) =>
         'Content-Type': 'application/json',
       },
     })
-      .then((response) => response.json())
+      .then((resp) => {
+        if (resp.ok) {
+          return resp.json();
+        }
+        if (resp.status === 404) {
+          // User not found
+          return false;
+        }
+        return console.warn('error');
+      })
       .then((data) => resolve(data))
       .catch(reject);
   });

@@ -5,16 +5,30 @@
 import { Button } from 'react-bootstrap';
 import { signOut } from '@/utils/auth'; // anything in the src dir, you can use the @ instead of relative paths
 import { useAuth } from '@/utils/context/authContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserRegistrationModalForm from '../components/forms/UserRegistrationModalForm';
+import { checkUser } from '../api/userData';
 
 function Home() {
   const { user } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModal = () => {
-    setIsModalOpen(true);
+    checkUser(user.uid).then((backendUser) => {
+      console.warn('backend user response', backendUser);
+      if (!backendUser) {
+        setIsModalOpen(true);
+      } else {
+        setIsModalOpen(false);
+      }
+    });
   };
+
+  useEffect(() => {
+    if (user.uid) {
+      handleModal();
+    }
+  }, [user]);
 
   return (
     <div
@@ -27,12 +41,12 @@ function Home() {
       }}
     >
       <h1>Hello {user.displayName}! </h1>
-      <Button onClick={handleModal}>Open Modal</Button>
-      {isModalOpen && <UserRegistrationModalForm onClose={() => setIsModalOpen(false)} />}
+
       <p>Click the button below to logout!</p>
       <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
         Sign Out
       </Button>
+      {isModalOpen && <UserRegistrationModalForm onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 }
