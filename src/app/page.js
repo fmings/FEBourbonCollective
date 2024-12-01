@@ -5,6 +5,7 @@
 import { Button } from 'react-bootstrap';
 import { useAuth } from '@/utils/context/authContext';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import UserRegistrationModalForm from '../components/forms/UserRegistrationModalForm';
 import { checkUser } from '../api/userData';
 import BourbonCard from '../components/BourbonCard';
@@ -14,6 +15,7 @@ function Home() {
   const { user } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bourbons, setBourbons] = useState([]);
+  const router = useRouter();
 
   const handleModal = () => {
     checkUser(user.uid).then((backendUser) => {
@@ -40,6 +42,10 @@ function Home() {
     getAllBourbons();
   }, []);
 
+  const handleClick = () => {
+    router.push('/bourbon/new');
+  };
+
   return (
     <div>
       <div
@@ -55,7 +61,7 @@ function Home() {
 
         <div>Browse Bourbons</div>
         <div>Don&apos;t see what you are looking for?</div>
-        <Button>Add a Bourbon</Button>
+        <Button onClick={handleClick}>Add a Bourbon</Button>
       </div>
       <div className="d-flex flex-wrap">
         {bourbons.map((bourbon) => (
