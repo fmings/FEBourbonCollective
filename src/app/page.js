@@ -3,15 +3,17 @@
 // any component that uses useAuth needs this because if a component directly imports useAuth, it needs to be a client component since useAuth uses React hooks.
 
 import { Button } from 'react-bootstrap';
-import { signOut } from '@/utils/auth'; // anything in the src dir, you can use the @ instead of relative paths
 import { useAuth } from '@/utils/context/authContext';
 import { useEffect, useState } from 'react';
 import UserRegistrationModalForm from '../components/forms/UserRegistrationModalForm';
 import { checkUser } from '../api/userData';
+import BourbonCard from '../components/BourbonCard';
+import { getBourbons } from '../api/bourbonData';
 
 function Home() {
   const { user } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [bourbons, setBourbons] = useState([]);
 
   const handleModal = () => {
     checkUser(user.uid).then((backendUser) => {
@@ -30,23 +32,36 @@ function Home() {
     }
   }, [user]);
 
-  return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
+  const getAllBourbons = () => {
+    getBourbons().then(setBourbons);
+  };
 
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
-      {isModalOpen && <UserRegistrationModalForm onClose={() => setIsModalOpen(false)} />}
+  useEffect(() => {
+    getAllBourbons();
+  }, []);
+
+  return (
+    <div>
+      <div
+        className="text-center d-flex flex-column justify-content-center align-content-center"
+        style={{
+          height: '90vh',
+          padding: '30px',
+          maxWidth: '400px',
+          margin: '0 auto',
+        }}
+      >
+        {isModalOpen && <UserRegistrationModalForm onClose={() => setIsModalOpen(false)} />}
+
+        <div>Browse Bourbons</div>
+        <div>Don&apos;t see what you are looking for?</div>
+        <Button>Add a Bourbon</Button>
+      </div>
+      <div className="d-flex flex-wrap">
+        {bourbons.map((bourbon) => (
+          <BourbonCard bourbonObj={bourbon} key={bourbon.id} />
+        ))}
+      </div>
     </div>
   );
 }
