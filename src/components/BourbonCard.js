@@ -7,7 +7,7 @@ import { getUserBourbons } from '../api/userBourbonData';
 import { checkUser } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
-export default function BourbonCard({ bourbonObj }) {
+export default function BourbonCard({ bourbonObj, userBourbonObj }) {
   const [userBourbons, setUserBourbons] = useState([]);
   const [loggedInUserId, setLoggedInUserId] = useState(0);
   const { user } = useAuth();
@@ -30,21 +30,29 @@ export default function BourbonCard({ bourbonObj }) {
     return false;
   };
 
+  const renderButtons = () => {
+    if (isBourbonOnUserList()) {
+      return (
+        <>
+          <Button variant="primary">Closed</Button>
+          <Button variant="primary">Full</Button>
+          <Button variant="primary">Remove from My Collection</Button>
+        </>
+      );
+    }
+    if (userBourbonObj) {
+      return <Button variant="primary">Request Trade</Button>;
+    }
+    return <Button variant="primary">Add to My Collection</Button>;
+  };
+
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={bourbonObj.image} height="200" />
+      <Card.Img variant="top" src={bourbonObj ? bourbonObj.image : userBourbonObj.bourbon.image} height="200" />
       <Card.Body>
-        <Card.Title>{bourbonObj.name}</Card.Title>
-        <Card.Title>{bourbonObj.distillery.name}</Card.Title>
-        {isBourbonOnUserList() ? (
-          <>
-            <Button variant="primary">Closed</Button>
-            <Button variant="primary">Full</Button>
-            <Button variant="primary">Remove from My Collection</Button>
-          </>
-        ) : (
-          <Button variant="primary">Add to My Collection</Button>
-        )}
+        <Card.Title>{bourbonObj ? bourbonObj.name : userBourbonObj.bourbon.name}</Card.Title>
+        <Card.Title>{bourbonObj ? bourbonObj.distillery.name : userBourbonObj.bourbon.distillery.name}</Card.Title>
+        {renderButtons()}
       </Card.Body>
     </Card>
   );
@@ -57,6 +65,15 @@ BourbonCard.propTypes = {
     id: PropTypes.number,
     distillery: PropTypes.shape({
       name: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  userBourbonObj: PropTypes.shape({
+    bourbon: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      distillery: PropTypes.shape({
+        name: PropTypes.string,
+      }).isRequired,
     }).isRequired,
   }).isRequired,
 };

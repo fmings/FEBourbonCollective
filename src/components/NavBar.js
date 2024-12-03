@@ -1,12 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { checkUser } from '@/api/userData';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar() {
   const { user } = useAuth();
+  const [loggedInProfile, setLoggedInProfile] = useState({});
+
+  const getUserProfile = () => {
+    checkUser(user.uid).then(setLoggedInProfile);
+  };
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -24,7 +34,7 @@ export default function NavBar() {
             <Link className="nav-link" href="/userBourbon">
               All Collections
             </Link>
-            <Link className="nav-link" href={`/userBourbon/${user.uid}`}>
+            <Link className="nav-link" href={`/userBourbon/${loggedInProfile.id}`}>
               My Collection
             </Link>
             <Link className="nav-link" href="/user">
