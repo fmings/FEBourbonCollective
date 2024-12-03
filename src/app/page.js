@@ -65,7 +65,7 @@ function Home() {
       </div>
       <div className="d-flex flex-wrap">
         {bourbons.map((bourbon) => (
-          <BourbonCard bourbonObj={bourbon} key={bourbon.id} />
+          <BourbonCard bourbonObj={bourbon} key={bourbon.id} onUpdate={getAllBourbons} />
         ))}
       </div>
     </div>

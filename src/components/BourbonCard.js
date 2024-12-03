@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { getUserBourbons } from '../api/userBourbonData';
+import { addUserBourbon, getUserBourbons } from '../api/userBourbonData';
 import { checkUser } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
-export default function BourbonCard({ bourbonObj, userBourbonObj }) {
+export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
   const [userBourbons, setUserBourbons] = useState([]);
   const [loggedInUserId, setLoggedInUserId] = useState(0);
+  const [bourbonOnUserList, setBourbonOnUserList] = useState(false);
   const { user } = useAuth();
 
   const getUserProfile = () => {
@@ -19,19 +20,45 @@ export default function BourbonCard({ bourbonObj, userBourbonObj }) {
   };
 
   useEffect(() => {
-    getUserBourbons(loggedInUserId).then(setUserBourbons);
     getUserProfile();
   }, []);
 
-  const isBourbonOnUserList = () => {
-    if (userBourbons.length > 0) {
-      return userBourbons.some((userBourbon) => userBourbon.bourbonId === bourbonObj.id && userBourbon.userId === loggedInUserId);
+  useEffect(() => {
+    if (loggedInUserId) {
+      getUserBourbons(loggedInUserId).then(setUserBourbons);
     }
-    return false;
+  }, []);
+
+  useEffect(() => {
+    if (userBourbons.length > 0) {
+      const isOnList = userBourbons.some((userBourbon) => userBourbon.bourbonId === bourbonObj.id);
+      setBourbonOnUserList(isOnList);
+    }
+  }, [userBourbons, bourbonObj]);
+
+  useEffect(() => {
+    console.warn('userBourbons', userBourbons);
+    console.warn('bourbononuserlist after state update', bourbonOnUserList);
+  });
+
+  // const isBourbonOnUserList = () => {
+  //         return userBourbons.some((userBourbon) => {
+  //       const isOnList = userBourbon.bourbonId === bourbonObj.id;
+  //       console.warn('isonlist', isOnList)
+  //       return isOnList
+  //     });
+  //    };
+
+  // const bourbonOnUserList = isBourbonOnUserList();
+  const addBourbonToMyCollection = () => {
+    const payload = { ...userBourbonObj, userId: loggedInUserId, bourbonId: bourbonObj.id, openBottle: false, emptyBottle: false };
+    addUserBourbon(payload).then(() => {
+      onUpdate();
+    });
   };
 
   const renderButtons = () => {
-    if (isBourbonOnUserList()) {
+    if (bourbonOnUserList) {
       return (
         <>
           <Button variant="primary">Closed</Button>
@@ -40,10 +67,14 @@ export default function BourbonCard({ bourbonObj, userBourbonObj }) {
         </>
       );
     }
-    if (userBourbonObj) {
+    if (userBourbonObj && !bourbonOnUserList) {
       return <Button variant="primary">Request Trade</Button>;
     }
-    return <Button variant="primary">Add to My Collection</Button>;
+    return (
+      <Button variant="primary" onClick={addBourbonToMyCollection}>
+        Add to My Collection
+      </Button>
+    );
   };
 
   return (
@@ -76,4 +107,5 @@ BourbonCard.propTypes = {
       }).isRequired,
     }).isRequired,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
