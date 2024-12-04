@@ -3,12 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { getUserBourbons } from '../api/userBourbonData';
+import { addUserBourbon } from '../api/userBourbonData';
 import { checkUser } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
-export default function BourbonCard({ bourbonObj, userBourbonObj }) {
-  const [userBourbons, setUserBourbons] = useState([]);
+export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
   const [loggedInUserId, setLoggedInUserId] = useState(0);
   const { user } = useAuth();
 
@@ -19,19 +18,18 @@ export default function BourbonCard({ bourbonObj, userBourbonObj }) {
   };
 
   useEffect(() => {
-    getUserBourbons(loggedInUserId).then(setUserBourbons);
     getUserProfile();
   }, []);
 
-  const isBourbonOnUserList = () => {
-    if (userBourbons.length > 0) {
-      return userBourbons.some((userBourbon) => userBourbon.bourbonId === bourbonObj.id && userBourbon.userId === loggedInUserId);
-    }
-    return false;
+  const addBourbonToMyCollection = () => {
+    const payload = { ...userBourbonObj, userId: loggedInUserId, bourbonId: bourbonObj.id, openBottle: false, emptyBottle: false };
+    addUserBourbon(payload).then(() => {
+      onUpdate();
+    });
   };
 
   const renderButtons = () => {
-    if (isBourbonOnUserList()) {
+    if (userBourbonObj && userBourbonObj.userId === loggedInUserId) {
       return (
         <>
           <Button variant="primary">Closed</Button>
@@ -43,7 +41,11 @@ export default function BourbonCard({ bourbonObj, userBourbonObj }) {
     if (userBourbonObj) {
       return <Button variant="primary">Request Trade</Button>;
     }
-    return <Button variant="primary">Add to My Collection</Button>;
+    return (
+      <Button variant="primary" onClick={addBourbonToMyCollection}>
+        Add to My Collection
+      </Button>
+    );
   };
 
   return (
@@ -68,6 +70,7 @@ BourbonCard.propTypes = {
     }).isRequired,
   }).isRequired,
   userBourbonObj: PropTypes.shape({
+    userId: PropTypes.number,
     bourbon: PropTypes.shape({
       image: PropTypes.string,
       name: PropTypes.string,
@@ -76,4 +79,5 @@ BourbonCard.propTypes = {
       }).isRequired,
     }).isRequired,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
