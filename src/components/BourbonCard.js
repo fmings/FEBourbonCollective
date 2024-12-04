@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { addUserBourbon, updateUserBourbon } from '../api/userBourbonData';
+import { addUserBourbon, deleteUserBourbon, updateUserBourbon } from '../api/userBourbonData';
 import { checkUser } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
@@ -42,6 +42,12 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
     });
   };
 
+  const removeUserBourbonFromCollection = () => {
+    deleteUserBourbon(userBourbonObj.id).then(() => {
+      onUpdate();
+    });
+  };
+
   const renderButtons = () => {
     if (userBourbonObj && userBourbonObj.userId === loggedInUserId) {
       return (
@@ -52,7 +58,9 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
           <Button variant="primary" onClick={toggleEmptyBottle}>
             {userBourbonObj.emptyBottle ? 'Empty' : 'Full'}
           </Button>
-          <Button variant="primary">Remove from My Collection</Button>
+          <Button variant="primary" onClick={removeUserBourbonFromCollection}>
+            Remove from My Collection
+          </Button>
         </>
       );
     }
