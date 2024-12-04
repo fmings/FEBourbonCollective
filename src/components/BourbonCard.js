@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { addUserBourbon } from '../api/userBourbonData';
+import { addUserBourbon, updateUserBourbon } from '../api/userBourbonData';
 import { checkUser } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
@@ -28,12 +28,30 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
     });
   };
 
+  const toggleOpenBottle = () => {
+    const updatedState = !userBourbonObj.openBottle;
+    updateUserBourbon(userBourbonObj.id, { ...userBourbonObj, openBottle: updatedState }).then(() => {
+      onUpdate();
+    });
+  };
+
+  const toggleEmptyBottle = () => {
+    const updatedState = !userBourbonObj.emptyBottle;
+    updateUserBourbon(userBourbonObj.id, { ...userBourbonObj, emptyBottle: updatedState }).then(() => {
+      onUpdate();
+    });
+  };
+
   const renderButtons = () => {
     if (userBourbonObj && userBourbonObj.userId === loggedInUserId) {
       return (
         <>
-          <Button variant="primary">Closed</Button>
-          <Button variant="primary">Full</Button>
+          <Button variant="primary" onClick={toggleOpenBottle}>
+            {userBourbonObj.openBottle ? 'Open' : 'Closed'}
+          </Button>
+          <Button variant="primary" onClick={toggleEmptyBottle}>
+            {userBourbonObj.emptyBottle ? 'Empty' : 'Full'}
+          </Button>
           <Button variant="primary">Remove from My Collection</Button>
         </>
       );
@@ -70,7 +88,10 @@ BourbonCard.propTypes = {
     }).isRequired,
   }).isRequired,
   userBourbonObj: PropTypes.shape({
+    id: PropTypes.number,
     userId: PropTypes.number,
+    openBottle: PropTypes.bool,
+    emptyBottle: PropTypes.bool,
     bourbon: PropTypes.shape({
       image: PropTypes.string,
       name: PropTypes.string,
