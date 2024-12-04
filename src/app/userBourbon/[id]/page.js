@@ -20,7 +20,7 @@ export default function UserCollectionDetails() {
   return (
     <div>
       User Collection Details Page
-      {userBourbons.length > 0 ? userBourbons.map((userBourbon) => <BourbonCard userBourbonObj={userBourbon} key={userBourbon.id} />) : <div>No bourbons found in this collection.</div>};
+      {userBourbons.length > 0 ? userBourbons.map((userBourbon) => <BourbonCard userBourbonObj={userBourbon} key={userBourbon.id} onUpdate={getSingleUserBourbons} />) : <div>No bourbons found in this collection.</div>};
     </div>
   );
 }
