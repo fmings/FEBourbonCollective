@@ -6,9 +6,11 @@ import PropTypes from 'prop-types';
 import { addUserBourbon, deleteUserBourbon, updateUserBourbon } from '../api/userBourbonData';
 import { checkUser } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
+import TradeRequestModalForm from './forms/TradeRequestModalForm';
 
 export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
   const [loggedInUserId, setLoggedInUserId] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAuth();
 
   const getUserProfile = () => {
@@ -20,6 +22,10 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
   useEffect(() => {
     getUserProfile();
   }, []);
+
+  const handleTradeRequest = () => {
+    setIsModalOpen(true);
+  };
 
   const addBourbonToMyCollection = () => {
     const payload = { ...userBourbonObj, userId: loggedInUserId, bourbonId: bourbonObj.id, openBottle: false, emptyBottle: false };
@@ -65,7 +71,11 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
       );
     }
     if (userBourbonObj) {
-      return <Button variant="primary">Request Trade</Button>;
+      return (
+        <Button variant="primary" onClick={handleTradeRequest}>
+          Request Trade
+        </Button>
+      );
     }
     return (
       <Button variant="primary" onClick={addBourbonToMyCollection}>
@@ -76,6 +86,7 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
 
   return (
     <Card style={{ width: '18rem' }}>
+      {isModalOpen && <TradeRequestModalForm onClose={() => setIsModalOpen(false)} userBourbonObj={userBourbonObj} />}
       <Card.Img variant="top" src={bourbonObj ? bourbonObj.image : userBourbonObj.bourbon.image} height="200" />
       <Card.Body>
         <Card.Title>{bourbonObj ? bourbonObj.name : userBourbonObj.bourbon.name}</Card.Title>
