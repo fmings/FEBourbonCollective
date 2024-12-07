@@ -37,9 +37,12 @@ export default function TradeRequestModalForm({ userBourbonObj, onClose }) {
 
   const handleTradeRequestChange = (e) => {
     const { name, value } = e.target;
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    const requestingUserBourbonId = selectedOption.getAttribute('data-requestinguserbourbonid');
     setTradeRequestFormInput((prevState) => ({
       ...prevState,
       [name]: name === 'requestingBourbonId' ? Number(value) : value,
+      requestingUserBourbonId,
     }));
   };
 
@@ -53,6 +56,7 @@ export default function TradeRequestModalForm({ userBourbonObj, onClose }) {
         requestedFromBourbonId: userBourbonObj.bourbonId,
         pending: true,
         approved: false,
+        requestedFromUserBourbonId: userBourbonObj.id,
       };
       addTradeRequest(payload).then(() => {
         onClose();
@@ -74,7 +78,7 @@ export default function TradeRequestModalForm({ userBourbonObj, onClose }) {
             <Form.Select aria-label="Default select example" name="requestingBourbonId" value={tradeRequestFormInput.requestingBourbonId} onChange={handleTradeRequestChange} required>
               <option value="">Select distillery</option>
               {loggedInUserBourbons.map((loggedInUserBourbon) => (
-                <option key={loggedInUserBourbon.bourbon.id} value={loggedInUserBourbon.bourbon.id}>
+                <option key={loggedInUserBourbon.bourbon.id} value={loggedInUserBourbon.bourbon.id} data-requestinguserbourbonid={loggedInUserBourbon.id}>
                   {loggedInUserBourbon.bourbon.name}
                 </option>
               ))}
@@ -96,6 +100,7 @@ export default function TradeRequestModalForm({ userBourbonObj, onClose }) {
 
 TradeRequestModalForm.propTypes = {
   userBourbonObj: PropTypes.shape({
+    id: PropTypes.number,
     userId: PropTypes.number,
     bourbonId: PropTypes.number,
   }).isRequired,
