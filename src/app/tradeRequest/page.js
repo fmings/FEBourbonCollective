@@ -8,16 +8,7 @@ import ActiveTradeRequestCard from '../../components/ActiveTradeRequestCard';
 
 export default function TradeRequest() {
   const [pendingTradeRequests, setPendingTradeRequests] = useState([]);
-  // const [loggedInProfile, setLoggedInProfile] = useState({});
   const { user } = useAuth();
-
-  // const getUserProfile = () => {
-  //   checkUser(user.uid).then(setLoggedInProfile);
-  // };
-
-  // useEffect(() => {
-  //   getUserProfile();
-  // }, [])
 
   const getAllPendingTradeRequests = () => {
     checkUser(user.uid).then((backendUser) => {
@@ -33,7 +24,7 @@ export default function TradeRequest() {
     <div>
       Trade Request Page
       {pendingTradeRequests.map((pendingTradeRequest) => (
-        <ActiveTradeRequestCard pendingTradeRequestObj={pendingTradeRequest} key={pendingTradeRequest.id} />
+        <ActiveTradeRequestCard pendingTradeRequestObj={pendingTradeRequest} key={pendingTradeRequest.id} onUpdate={getAllPendingTradeRequests} />
       ))}
     </div>
   );
