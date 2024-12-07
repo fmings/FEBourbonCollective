@@ -64,7 +64,6 @@ export default function TradeRequestModalForm({ userBourbonObj, onClose }) {
 
   return (
     <Modal show>
-      {console.warn('userbourbonobj', userBourbonObj)}
       <Modal.Header>
         <Modal.Title className="modal-heading">Trade Request</Modal.Title>
       </Modal.Header>
