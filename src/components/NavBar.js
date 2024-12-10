@@ -19,7 +19,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" variant="dark">
       <Container>
         <Link passHref href="/" className="navbar-brand">
           <img src="\images\BourbonCollectiveLogoLight.png" alt="bourbon collective logo" width="175" />

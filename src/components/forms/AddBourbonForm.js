@@ -56,6 +56,7 @@ export default function AddBourbonForm() {
 
   return (
     <Form id="add-bourbon-form">
+      <h1 className="add-bourbon-header">Add a Bourbon</h1>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Distillery</Form.Label>
         <Form.Select aria-label="Default select example" name="distilleryId" value={bourbonFormInput.distilleryId} onChange={handleChange} required>

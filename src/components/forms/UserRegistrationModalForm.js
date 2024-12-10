@@ -18,11 +18,6 @@ export default function UserRegistrationModalForm({ onClose }) {
   const { user } = useAuth();
   const [registrationFormInput, setRegistrationFormInput] = useState(initialRegistrationState);
 
-  const handleClose = () => {
-    onClose();
-    router.push('/');
-  };
-
   const handleRegistrationChange = (e) => {
     const { name, value } = e.target;
     setRegistrationFormInput((prevState) => ({
@@ -45,8 +40,8 @@ export default function UserRegistrationModalForm({ onClose }) {
 
   return (
     <Modal show>
-      <Modal.Header>
-        <Modal.Title className="modal-heading">Register</Modal.Title>
+      <Modal.Header className="text-center">
+        <Modal.Title className="modal-heading text-center">Register</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form id="registration-form">
@@ -72,11 +67,8 @@ export default function UserRegistrationModalForm({ onClose }) {
           </Form.Group>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button type="submit" form="registration-form" variant="primary" onClick={handleSubmit}>
+      <Modal.Footer className="d-flex justify-content-center">
+        <Button type="submit" form="registration-form" variant="primary" className="submit-button" onClick={handleSubmit}>
           Register
         </Button>
       </Modal.Footer>

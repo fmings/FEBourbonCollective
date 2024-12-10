@@ -78,19 +78,19 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
       );
     }
     return (
-      <Button variant="primary" onClick={addBourbonToMyCollection}>
+      <Button className="add-to-collection-button" variant="primary" onClick={addBourbonToMyCollection}>
         Add to My Collection
       </Button>
     );
   };
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="bourbon-card">
       {isModalOpen && <TradeRequestModalForm onClose={() => setIsModalOpen(false)} userBourbonObj={userBourbonObj} />}
-      <Card.Img variant="top" src={bourbonObj ? bourbonObj.image : userBourbonObj.bourbon.image} height="200" />
+      <Card.Img className="bourbon-image" variant="top" src={bourbonObj ? bourbonObj.image : userBourbonObj.bourbon.image} />
       <Card.Body>
-        <Card.Title>{bourbonObj ? bourbonObj.name : userBourbonObj.bourbon.name}</Card.Title>
-        <Card.Title>{bourbonObj ? bourbonObj.distillery.name : userBourbonObj.bourbon.distillery.name}</Card.Title>
+        <Card.Title className="bourbon-card-bourbon-name">{bourbonObj ? bourbonObj.name : userBourbonObj.bourbon.name}</Card.Title>
+        <Card.Title className="bourbon-card-distillary-name">{bourbonObj ? bourbonObj.distillery.name : userBourbonObj.bourbon.distillery.name}</Card.Title>
         {renderButtons()}
       </Card.Body>
     </Card>

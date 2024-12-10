@@ -4,11 +4,15 @@ import ClientProvider from '@/utils/context/ClientProvider';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css';
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lilita+One&display=swap" rel="stylesheet" />
+      </Head>
       <body className={inter.className}>
         <ClientProvider>{children}</ClientProvider>
       </body>
