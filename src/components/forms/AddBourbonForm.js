@@ -56,6 +56,7 @@ export default function AddBourbonForm() {
 
   return (
     <Form id="add-bourbon-form">
+      <h1 className="add-bourbon-header">Add a Bourbon</h1>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Distillery</Form.Label>
         <Form.Select aria-label="Default select example" name="distilleryId" value={bourbonFormInput.distilleryId} onChange={handleChange} required>
@@ -69,15 +70,17 @@ export default function AddBourbonForm() {
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
         <Form.Label>Bourbon Brand/Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter the Brand/Name" name="username" value={bourbonFormInput.username} onChange={handleChange} required autoFocus />
+        <Form.Control type="text" placeholder="Enter the Brand/Name" name="name" value={bourbonFormInput.name} onChange={handleChange} required autoFocus />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
         <Form.Label>Bourbon Image</Form.Label>
         <Form.Control type="text" placeholder="link to image" name="email" value={bourbonFormInput.email} onChange={handleChange} required autoFocus />
       </Form.Group>
-      <Button type="submit" variant="primary" onClick={handleSubmit}>
-        Add
-      </Button>
+      <div className="d-flex justify-content-center">
+        <Button className="submit-button add-bourbon-submit-button" type="submit" variant="primary" onClick={handleSubmit}>
+          Add
+        </Button>
+      </div>
     </Form>
   );
 }

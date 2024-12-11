@@ -47,23 +47,25 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="d-flex flex-column align-items-center">
       <div
-        className="text-center d-flex flex-column justify-content-center align-content-center"
+        className="text-center d-flex flex-column justify-content-center align-items-center home-page-header"
         style={{
-          height: '90vh',
+          height: '28vh',
           padding: '30px',
-          maxWidth: '400px',
+          maxWidth: '600px',
           margin: '0 auto',
         }}
       >
         {isModalOpen && <UserRegistrationModalForm onClose={() => setIsModalOpen(false)} />}
 
-        <div>Browse Bourbons</div>
+        <h1>Browse Bourbons</h1>
         <div>Don&apos;t see what you are looking for?</div>
-        <Button onClick={handleClick}>Add a Bourbon</Button>
+        <Button className="add-bourbon-button" onClick={handleClick}>
+          Add a Bourbon
+        </Button>
       </div>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap align-items-center bourbon-cards-container">
         {bourbons.map((bourbon) => (
           <BourbonCard bourbonObj={bourbon} key={bourbon.id} onUpdate={getAllBourbons} />
         ))}

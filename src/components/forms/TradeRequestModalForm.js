@@ -87,10 +87,10 @@ export default function TradeRequestModalForm({ userBourbonObj, onClose }) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant="secondary" className="close-button" onClick={handleClose}>
           Close
         </Button>
-        <Button type="submit" form="trade-request-form" variant="primary" onClick={handleSubmit}>
+        <Button type="submit" className="submit-button" form="trade-request-form" variant="primary" onClick={handleSubmit}>
           Submit Request
         </Button>
       </Modal.Footer>

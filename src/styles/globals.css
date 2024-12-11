@@ -1,12 +1,287 @@
 body {
   background: #F0E6D2;
   color: black;
+  font-family: 'Jost', 'Lilita One', sans-serif !important
 }
 
-Form {
+form {
   color: black;
+}
+
+.sign-in-logo {
+  max-width: 1000px;
+}
+
+.sign-in-btn {
+  max-width: 500px;
+  min-width: 200px;
+  background-color: #473630;
+  border: none;
+  margin-top: 60px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.sign-in-btn {
+  max-width: 500px;
+  background-color: #775B51;
+  border: none;
+}
+
+.sign-in-btn:hover {
+  background-color: #473630;
+}
+
+.sign-in-btn:active { 
+  background-color: #775B51 !important;
+}
+
+.modal-content {
+  background-color: #473630;
+  color: #f5f0ea;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+}
+
+.modal-title {
+  font-weight: bold;
+  font-size: 38px;
+}
+
+.form-label {
+  color: #f5f0ea;
 }
 
 .modal-heading {
-  color: black;
+  width: 100%
+}
+
+.modal-dialog {
+  margin-top: 15vh;
+}
+
+input, input::placeholder {
+  color: #473630 !important;
+}
+
+.submit-button {
+  background-color: #F0E6D2;
+  color: #473630;
+  border: none;
+  font-weight: bold;
+  padding: 10px 50px 10px 50px;
+}
+
+.submit-button:hover {
+  background-color: #775B51;
+}
+
+.submit-button:active {
+  background-color: #F0E6D2 !important;
+  color: #473630 !important;
+}
+
+.navbar {
+  background-color: #473630;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #f5f0ea;
+  font-size: 1.3rem;
+  margin: 5px;
+}
+
+.btn-danger {
+  background-color: #B43436;
+  border: none;
+  font-weight: bold;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.home-page-header {
+  color: #473630; 
+}
+
+.add-bourbon-button {
+  width: 25vh;
+  margin-top: 13px;
+  background-color: #781718;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.add-bourbon-button:hover {
+  background-color: #B43436;
+}
+
+.add-bourbon-button:active {
+  background-color: #781718 !important;
+}
+
+.bourbon-cards-container {
+  margin-bottom: 60px;
+  max-width: 1000px;
+}
+
+.bourbon-card {
+  background-color: #F0E6D2;
+  border: none;
+  margin: 15px 35px 20px 35px;
+  /* box-shadow: 0 0 10px rgba(119, 91, 81, 0.1); */
+  width: 16rem !important;
+  height: 22rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body {
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bourbon-image {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.bourbon-card-bourbon-name {
+  font-size: 1rem;
+  min-height: 30px;
+  margin-top: 3px;
+}
+
+.bourbon-card-distillary-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.add-to-collection-button {
+  width: 100%;
+  background-color: #775B51;
+  border: none;
+}
+
+.add-to-collection-button:hover {
+  background-color: #473630;
+}
+
+.add-to-collection-button:active {
+  background-color: #775B51 !important;
+}
+
+#add-bourbon-form {
+  background-color: #473630;
+  max-width: 800px;
+  border-radius: 15px;
+  height: 60vh;
+  padding: 30px;
+  margin: 5rem auto;
+}
+
+.add-bourbon-header {
+  font-weight: bold;
+  font-size: 38px;
+  color: #F0E6D2;
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+
+.add-bourbon-submit-button {
+  margin-top: 20px;
+}
+
+.collection-cards-container {
+  width: 100%;
+  min-width: 20rem;
+  max-width: 45rem;
+}
+
+.collection-card {
+  background-color: #473630;
+  color: #ffffff;
+  margin-bottom: 40px;
+  padding: 20px 10px 20px 10px;
+}
+
+.user-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 0px;
+}
+
+.collection-card-body {
+  margin-left: 1rem;
+  font-size: 1.25rem;
+}
+
+.view-collection-button {
+  background-color: #775B51;
+  color: #F0E6D2;
+  border: none;
+  font-weight: bold;
+  padding: 7px 50px 7px 50px;
+  margin-right: 40px;
+}
+
+.view-collection-button:hover {
+  background-color: #F0E6D2;
+  color: #775B51;
+}
+
+.view-collection-button:active {
+  background-color: #775B51 !important;
+  color: #F0E6D2 !important;
+}
+
+.request-trade-button {
+  font-size: 0.75rem;
+  font-weight: bold;
+  width: 100%;
+  max-width: 5rem;
+  background-color: #775B51;
+  border: none;
+}
+
+.request-trade-button:hover {
+  background-color: #473630;
+}
+
+.request-trade-button:active {
+  background-color: #775B51 !important;
+}
+
+.close-button {
+  background-color: #775B51;
+  color: #F0E6D2;
+  border: none;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+}
+
+.open-close-button {
+  background-color: #F0E6D2;
+  color: #775B51;
+  border: none;
+}
+
+.open-close-button:hover {
+  background-color: #F0E6D2;
+  color: #775B51;
+  border: none;
+}
+
+.empty-full-button {
+
 }

@@ -13,15 +13,19 @@ export default function UserCollectionCard({ userProfileObj }) {
   };
 
   return (
-    <Card>
-        <Card.Body>
-          <Card.Title>{userProfileObj.username}&apos;s collection</Card.Title>
+    <Card className="collection-card">
+      <Card.Body className="collection-card-body d-flex flex-row align-items-center">
+        <div>
+          <Card.Title className="user-title">{userProfileObj.username}&apos;s collection</Card.Title>
           <Card.Text>{userProfileObj.numberOfBourbons} bottles</Card.Text>
-          <Button variant="primary" onClick={handleClick}>
-            View Collection
+        </div>
+        <div>
+          <Button className="view-collection-button" variant="primary" onClick={handleClick}>
+            View
           </Button>
-        </Card.Body>
-      </Card>
+        </div>
+      </Card.Body>
+    </Card>
   );
 }
 

@@ -3,8 +3,7 @@ import AddBourbonForm from '../../../components/forms/AddBourbonForm';
 
 export default function AddBourbon() {
   return (
-    <div>
-      Add Bourbon Page
+    <div className="">
       <AddBourbonForm />
     </div>
   );
