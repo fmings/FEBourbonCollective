@@ -197,3 +197,91 @@ h1 {
   margin-bottom: 25px;
   margin-top: 10px;
 }
+
+.add-bourbon-submit-button {
+  margin-top: 20px;
+}
+
+.collection-cards-container {
+  width: 100%;
+  min-width: 20rem;
+  max-width: 45rem;
+}
+
+.collection-card {
+  background-color: #473630;
+  color: #ffffff;
+  margin-bottom: 40px;
+  padding: 20px 10px 20px 10px;
+}
+
+.user-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 0px;
+}
+
+.collection-card-body {
+  margin-left: 1rem;
+  font-size: 1.25rem;
+}
+
+.view-collection-button {
+  background-color: #775B51;
+  color: #F0E6D2;
+  border: none;
+  font-weight: bold;
+  padding: 7px 50px 7px 50px;
+  margin-right: 40px;
+}
+
+.view-collection-button:hover {
+  background-color: #F0E6D2;
+  color: #775B51;
+}
+
+.view-collection-button:active {
+  background-color: #775B51 !important;
+  color: #F0E6D2 !important;
+}
+
+.request-trade-button {
+  font-size: 0.75rem;
+  font-weight: bold;
+  width: 100%;
+  max-width: 5rem;
+  background-color: #775B51;
+  border: none;
+}
+
+.request-trade-button:hover {
+  background-color: #473630;
+}
+
+.request-trade-button:active {
+  background-color: #775B51 !important;
+}
+
+.close-button {
+  background-color: #775B51;
+  color: #F0E6D2;
+  border: none;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+}
+
+.open-close-button {
+  background-color: #F0E6D2;
+  color: #775B51;
+  border: none;
+}
+
+.open-close-button:hover {
+  background-color: #F0E6D2;
+  color: #775B51;
+  border: none;
+}
+
+.empty-full-button {
+
+}

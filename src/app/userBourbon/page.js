@@ -32,11 +32,22 @@ export default function AllCollections() {
   }, [loggedInProfile]);
 
   return (
-    <div>
-      All User Collections Page
-      {userProfiles.map((userProfile) => (
-        <UserCollectionCard userProfileObj={userProfile} key={userProfile.id} />
-      ))}
+    <div className="d-flex flex-column align-items-center">
+      <div
+        className="text-center d-flex flex-column justify-content-center align-items-center home-page-header"
+        style={{
+          height: '15vh',
+          maxWidth: '600px',
+          margin: '0 auto',
+        }}
+      >
+        <h1>All Collections</h1>
+      </div>
+      <div className="collection-cards-container">
+        {userProfiles.map((userProfile) => (
+          <UserCollectionCard userProfileObj={userProfile} key={userProfile.id} />
+        ))}
+      </div>
     </div>
   );
 }

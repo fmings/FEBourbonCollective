@@ -19,8 +19,16 @@ export default function UserCollectionDetails() {
 
   return (
     <div>
-      User Collection Details Page
-      {userBourbons.length > 0 ? userBourbons.map((userBourbon) => <BourbonCard userBourbonObj={userBourbon} key={userBourbon.id} onUpdate={getSingleUserBourbons} />) : <div>No bourbons found in this collection.</div>};
+      <div
+        className="d-flex flex-column justify-content-center home-page-header"
+        style={{
+          height: '15vh',
+          marginLeft: '30px',
+        }}
+      >
+        <h1>{`${userBourbons[0]?.user?.username}'s collection`}</h1>
+      </div>
+      <div className="d-flex flex-wrap align-items-center bourbon-cards-container">{userBourbons.length > 0 ? userBourbons.map((userBourbon) => <BourbonCard userBourbonObj={userBourbon} key={userBourbon.id} onUpdate={getSingleUserBourbons} />) : <div>No bourbons found in this collection.</div>};</div>
     </div>
   );
 }

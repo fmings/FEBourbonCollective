@@ -58,10 +58,10 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
     if (userBourbonObj && userBourbonObj.userId === loggedInUserId) {
       return (
         <>
-          <Button variant="primary" onClick={toggleOpenBottle}>
+          <Button className="open-close-button" variant="primary" onClick={toggleOpenBottle}>
             {userBourbonObj.openBottle ? 'Open' : 'Closed'}
           </Button>
-          <Button variant="primary" onClick={toggleEmptyBottle}>
+          <Button className="empty-full-button" variant="primary" onClick={toggleEmptyBottle}>
             {userBourbonObj.emptyBottle ? 'Empty' : 'Full'}
           </Button>
           <Button variant="primary" onClick={removeUserBourbonFromCollection}>
@@ -72,9 +72,17 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
     }
     if (userBourbonObj) {
       return (
-        <Button variant="primary" onClick={handleTradeRequest}>
-          Request Trade
-        </Button>
+        <div className="d-flex flex-row align-items-center">
+          <div>
+            <div>{userBourbonObj.openBottle ? 'Open' : 'Closed'}</div>
+            <div>{userBourbonObj.emptyBottle ? 'Empty' : 'Full'}</div>
+          </div>
+          <div className="ms-auto">
+            <Button className="request-trade-button" variant="primary" onClick={handleTradeRequest}>
+              Request Trade
+            </Button>
+          </div>
+        </div>
       );
     }
     return (

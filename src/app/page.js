@@ -47,7 +47,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="d-flex flex-column align-items-center">
       <div
         className="text-center d-flex flex-column justify-content-center align-items-center home-page-header"
         style={{
@@ -65,7 +65,7 @@ function Home() {
           Add a Bourbon
         </Button>
       </div>
-      <div className="d-flex flex-wrap justify-content-center align-items-center bourbon-cards-container">
+      <div className="d-flex flex-wrap align-items-center bourbon-cards-container">
         {bourbons.map((bourbon) => (
           <BourbonCard bourbonObj={bourbon} key={bourbon.id} onUpdate={getAllBourbons} />
         ))}
