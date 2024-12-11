@@ -26,14 +26,24 @@ export default function UserProfile() {
   };
 
   return (
-    <>
-      <div>{userProfile.fullName}</div>
-      <div>{userProfile.username}</div>
-      <div>
+    <div
+      className="text-center d-flex flex-column justify-content-center align-items-center profile-container"
+      style={{
+        height: '90vh',
+        padding: '30px',
+        maxWidth: '1000px',
+        margin: '0 auto',
+      }}
+    >
+      <div className="profile-name">{userProfile.fullName}</div>
+      <div className="profile-username">{userProfile.username}</div>
+      <div className="profile-city-state">
         {userProfile.city}, {userProfile.state}
       </div>
-      <div>{userProfile.numberOfBourbons}</div>
-      <Button onClick={handleClick}>View Trade Requests</Button>
-    </>
+      <div className="profile-number-of-bourbons">{userProfile.numberOfBourbons} Bottles of Bourbon</div>
+      <Button className="view-trade-requests-button" onClick={handleClick}>
+        View Trade Requests
+      </Button>
+    </div>
   );
 }
