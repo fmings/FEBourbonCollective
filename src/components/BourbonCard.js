@@ -57,17 +57,23 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
   const renderButtons = () => {
     if (userBourbonObj && userBourbonObj.userId === loggedInUserId) {
       return (
-        <>
-          <Button className="open-close-button" variant="primary" onClick={toggleOpenBottle}>
-            {userBourbonObj.openBottle ? 'Open' : 'Closed'}
-          </Button>
-          <Button className="empty-full-button" variant="primary" onClick={toggleEmptyBottle}>
-            {userBourbonObj.emptyBottle ? 'Empty' : 'Full'}
-          </Button>
-          <Button variant="primary" onClick={removeUserBourbonFromCollection}>
-            Remove from My Collection
-          </Button>
-        </>
+        <div className="d-flex flex-row align-items-center">
+          <div>
+            <Button className="bourbon-card-button" variant="primary" onClick={toggleOpenBottle}>
+              {userBourbonObj.openBottle ? 'Open' : 'Closed'}
+            </Button>
+            <div>
+              <Button className="bourbon-card-button" variant="primary" onClick={toggleEmptyBottle}>
+                {userBourbonObj.emptyBottle ? 'Empty' : 'Full'}
+              </Button>
+            </div>
+          </div>
+          <div className="ms-auto">
+            <Button className="bourbon-card-button" variant="primary" onClick={removeUserBourbonFromCollection}>
+              <img src="\images\x-icon.png" alt="remove from collection" width="16" />
+            </Button>
+          </div>
+        </div>
       );
     }
     if (userBourbonObj) {

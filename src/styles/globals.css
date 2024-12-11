@@ -270,18 +270,72 @@ h1 {
   padding: 10px 10px 10px 10px;
 }
 
-.open-close-button {
+/* .open-close-button {
   background-color: #F0E6D2;
   color: #775B51;
   border: none;
 }
 
 .open-close-button:hover {
+  background-color: rgba(71, 54, 48, 0.1);
+  color: #775B51;
+  border: none;
+} */
+
+.bourbon-card-button {
   background-color: #F0E6D2;
   color: #775B51;
   border: none;
 }
 
-.empty-full-button {
+.bourbon-card-button:hover {
+  background-color: rgba(71, 54, 48, 0.1);
+  color: #775B51;
+  border: none;
+}
 
+.bourbon-card-button:active {
+  background-color: rgba(71, 54, 48, 0.1) !important;
+  color: #775B51;
+  border: none;
+}
+
+.profile-container {
+  color: #473630;
+}
+
+.profile-name {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.profile-username {
+  font-size: 2.5rem;
+}
+
+.profile-city-state {
+  font-size: 2.5rem;
+}
+
+.profile-number-of-bourbons {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
+.view-trade-requests-button {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 20px 30px;
+  background-color: #775B51;
+  border: none;
+}
+
+.view-trade-requests-button:hover {
+  background-color: #473630;
+}
+
+.view-trade-requests-button:active {
+  background-color: #775B51 !important;
 }
