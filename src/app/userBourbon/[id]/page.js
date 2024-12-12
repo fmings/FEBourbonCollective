@@ -26,9 +26,9 @@ export default function UserCollectionDetails() {
           marginLeft: '30px',
         }}
       >
-        <h1>{`${userBourbons[0]?.user?.username}'s collection`}</h1>
+        <h1>{userBourbons[0]?.user?.username ? `${userBourbons[0]?.user?.username}'s collection` : `My Collection`}</h1>
       </div>
-      <div className="d-flex flex-wrap align-items-center bourbon-cards-container">{userBourbons.length > 0 ? userBourbons.map((userBourbon) => <BourbonCard userBourbonObj={userBourbon} key={userBourbon.id} onUpdate={getSingleUserBourbons} />) : <div>No bourbons found in this collection.</div>};</div>
+      <div className="d-flex flex-wrap align-items-center bourbon-cards-container">{userBourbons.length > 0 ? userBourbons.map((userBourbon) => <BourbonCard userBourbonObj={userBourbon} key={userBourbon.id} onUpdate={getSingleUserBourbons} />) : <div>No bourbons found in this collection.</div>}</div>
     </div>
   );
 }

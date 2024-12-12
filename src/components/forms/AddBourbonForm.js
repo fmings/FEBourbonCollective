@@ -74,7 +74,7 @@ export default function AddBourbonForm() {
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
         <Form.Label>Bourbon Image</Form.Label>
-        <Form.Control type="text" placeholder="link to image" name="email" value={bourbonFormInput.email} onChange={handleChange} required autoFocus />
+        <Form.Control type="text" placeholder="link to image" name="image" value={bourbonFormInput.image} onChange={handleChange} required autoFocus />
       </Form.Group>
       <div className="d-flex justify-content-center">
         <Button className="submit-button add-bourbon-submit-button" type="submit" variant="primary" onClick={handleSubmit}>
