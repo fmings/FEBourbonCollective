@@ -18,7 +18,7 @@ export default function UserCollectionDetails() {
   }, []);
 
   return (
-    <div>
+    <div className="user-collection-page-container">
       <div
         className="d-flex flex-column justify-content-center home-page-header"
         style={{
