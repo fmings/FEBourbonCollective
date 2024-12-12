@@ -36,15 +36,15 @@ export default function ActiveTradeRequestCard({ pendingTradeRequestObj, onUpdat
   };
 
   return (
-    <Card>
-      <Card.Body>
+    <Card className="pending-trade-request-card">
+      <Card.Body className="pending-trade-request-card-body d-flex flex-row align-items-center">
         <Card.Text>
           {pendingTradeRequestObj.requestingUser.username} requests to trade their {pendingTradeRequestObj.requestingFromBourbon.name} for your {pendingTradeRequestObj.requestedFromBourbon.name}
         </Card.Text>
-        <Button variant="primary" onClick={handleAccept}>
+        <Button className="accept-button" variant="primary" onClick={handleAccept}>
           Accept
         </Button>
-        <Button variant="danger" onClick={handleReject}>
+        <Button className="reject-button" variant="danger" onClick={handleReject}>
           Reject
         </Button>
       </Card.Body>

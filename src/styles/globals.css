@@ -202,6 +202,13 @@ h1 {
   margin-top: 20px;
 }
 
+.user-collections-page-container {
+  width: 100%;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .collection-cards-container {
   width: 100%;
   min-width: 20rem;
@@ -338,4 +345,63 @@ h1 {
 
 .view-trade-requests-button:active {
   background-color: #775B51 !important;
+}
+
+.trade-requests-page-container {
+  width: 100%;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trade-request-cards-container {
+  width: 100%;
+  min-width: 20rem;
+  max-width: 65rem;
+}
+
+.pending-trade-request-card{
+  background-color: #775B51;
+  color: #ffffff;
+  margin-bottom: 40px;
+  padding: 20px 10px 20px 10px;
+}
+
+.pending-trade-request-card-body {
+  margin-left: 1rem;
+  font-size: 1.25rem;
+}
+
+.accept-button {
+  background-color: #5A7751;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  box-shadow: 2px 4px 8px #473630;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+.accept-button:hover {
+  background-color: #65855b;
+}
+
+.accept-button:active {
+  background-color: #5A7751 !important;
+}
+
+.reject-button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  box-shadow: 2px 4px 8px #473630;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+.user-collection-page-container {
+  width: 100%;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
 }

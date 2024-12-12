@@ -21,11 +21,23 @@ export default function TradeRequest() {
   }, []);
 
   return (
-    <div>
-      Trade Request Page
-      {pendingTradeRequests.map((pendingTradeRequest) => (
-        <ActiveTradeRequestCard pendingTradeRequestObj={pendingTradeRequest} key={pendingTradeRequest.id} onUpdate={getAllPendingTradeRequests} />
-      ))}
+    <div className="trade-requests-page-container">
+      <div
+        className="d-flex flex-column justify-content-center home-page-header"
+        style={{
+          height: '15vh',
+          marginLeft: '30px',
+        }}
+      >
+        <h1>Pending Trade Requests</h1>
+      </div>
+      <div className="d-flex flex-column align-items-center">
+        <div className="trade-request-cards-container">
+          {pendingTradeRequests.map((pendingTradeRequest) => (
+            <ActiveTradeRequestCard pendingTradeRequestObj={pendingTradeRequest} key={pendingTradeRequest.id} onUpdate={getAllPendingTradeRequests} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
