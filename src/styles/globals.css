@@ -457,3 +457,7 @@ h1 {
   border-radius: 0px;
   border-bottom: 3px solid #775b51;
 }
+
+.add-distillery-text {
+  text-decoration: underline;
+}
