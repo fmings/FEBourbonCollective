@@ -11,6 +11,7 @@ import TradeRequestModalForm from './forms/TradeRequestModalForm';
 export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
   const [loggedInUserId, setLoggedInUserId] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const { user } = useAuth();
 
   const getUserProfile = () => {
@@ -32,6 +33,10 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
     addUserBourbon(payload).then(() => {
       onUpdate();
     });
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 3000);
   };
 
   const toggleOpenBottle = () => {
@@ -92,9 +97,12 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
       );
     }
     return (
-      <Button className="add-to-collection-button" variant="primary" onClick={addBourbonToMyCollection}>
-        Add to My Collection
-      </Button>
+      <div>
+        <Button className="add-to-collection-button" variant="primary" onClick={addBourbonToMyCollection}>
+          Add to My Collection
+        </Button>
+        {showPopup && <div className="popup-message">Added to your collection!</div>}
+      </div>
     );
   };
 
