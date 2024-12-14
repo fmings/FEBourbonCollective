@@ -29,4 +29,17 @@ const addBourbon = (payload) =>
       .catch(reject);
   });
 
-export { getBourbons, addBourbon };
+const searchBourbon = (query) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/bourbons/search?searchValue=${query}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(Object.values(data)))
+      .catch(reject);
+  });
+
+export { getBourbons, addBourbon, searchBourbon };
