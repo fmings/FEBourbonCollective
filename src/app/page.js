@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import { useAuth } from '@/utils/context/authContext';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import SearchBox from '@/components/SearchBox';
 import UserRegistrationModalForm from '../components/forms/UserRegistrationModalForm';
 import { checkUser } from '../api/userData';
 import BourbonCard from '../components/BourbonCard';
@@ -64,6 +65,9 @@ function Home() {
         <Button className="add-bourbon-button" onClick={handleClick}>
           Add a Bourbon
         </Button>
+      </div>
+      <div>
+        <SearchBox />
       </div>
       <div className="d-flex flex-wrap align-items-center bourbon-cards-container">
         {bourbons.map((bourbon) => (

@@ -409,3 +409,16 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
+
+.search-results-container {
+  background-color: rgba(119, 91, 81, 0.05);
+  width: 100%;
+  max-width: 1200px;
+}
+
+.searchBox {
+  background-color: #F0E6D2;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 3px solid #775b51;
+}
