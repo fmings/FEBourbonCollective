@@ -44,7 +44,7 @@ export default function UserRegistrationModalForm({ onClose }) {
         <Modal.Title className="modal-heading text-center">Register</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form id="registration-form">
+        <Form id="registration-form" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Full Name</Form.Label>
             <Form.Control type="text" placeholder="Enter your full name..." name="fullName" value={registrationFormInput.fullName} onChange={handleRegistrationChange} required autoFocus />
@@ -68,7 +68,7 @@ export default function UserRegistrationModalForm({ onClose }) {
         </Form>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-center">
-        <Button type="submit" form="registration-form" variant="primary" className="submit-button" onClick={handleSubmit}>
+        <Button type="submit" form="registration-form" variant="primary" className="submit-button">
           Register
         </Button>
       </Modal.Footer>
