@@ -31,7 +31,9 @@ export default function BourbonCard({ bourbonObj, userBourbonObj, onUpdate }) {
   const addBourbonToMyCollection = () => {
     const payload = { ...userBourbonObj, userId: loggedInUserId, bourbonId: bourbonObj.id, openBottle: false, emptyBottle: false };
     addUserBourbon(payload).then(() => {
-      onUpdate();
+      if (typeof onUpdate === 'function') {
+        onUpdate();
+      }
     });
     setShowPopup(true);
     setTimeout(() => {

@@ -47,6 +47,10 @@ function Home() {
     router.push('/bourbon/new');
   };
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="d-flex flex-column align-items-center">
       <div
@@ -58,7 +62,14 @@ function Home() {
           margin: '0 auto',
         }}
       >
-        {isModalOpen && <UserRegistrationModalForm onClose={() => setIsModalOpen(false)} />}
+        {isModalOpen && (
+          <UserRegistrationModalForm
+            onClose={() => {
+              setIsModalOpen(false);
+              handleRefresh();
+            }}
+          />
+        )}
 
         <h1>Browse Bourbons</h1>
         <div>Don&apos;t see what you are looking for?</div>
